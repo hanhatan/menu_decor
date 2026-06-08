@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Lẩu Nhà An - Menu & Không Gian Decor</title>
+    <meta name="description"
+        content="Xem thực đơn chi tiết 16 trang và hình ảnh không gian ấm cúng của Tiệm Lẩu Nhà An. Trải nghiệm ẩm thực tuyệt vời!">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Glow Elements for Aesthetic Appeal -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <!-- Header Block -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-logo" id="brand-logo">
+                <span class="brand-title">TIỆM LẨU NHÀ AN</span>
+                <span class="brand-subtitle">Ấm Áp Như Nhà • Đậm Đà Như Lẩu</span>
+            </div>
+
+            <!-- Main Navigation Tab Switcher -->
+            <nav class="main-nav">
+                <button class="nav-tab active" id="tab-menu" data-target="menu-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                        <path d="M6 6h10" />
+                        <path d="M6 10h10" />
+                        <path d="M6 14h10" />
+                    </svg>
+                    Thực Đơn (Menu)
+                </button>
+                <button class="nav-tab" id="tab-decor" data-target="decor-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                    Không Gian (Decor)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-content">
+
+        <!-- SECTION 1: MENU SHOWCASE -->
+        <section id="menu-section" class="content-section active">
+            <div class="menu-container">
+                <!-- Page Info and Action Bar -->
+                <div class="action-bar">
+                    <div class="info-text">
+                        Thực đơn gồm <span class="highlight">16 trang</span>. Vuốt trái/phải hoặc dùng các nút điều
+                        hướng để xem chi tiết.
+                    </div>
+                    <button class="btn btn-secondary btn-zoom" id="btn-zoom-menu" title="Phóng to thực đơn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            <line x1="11" y1="8" x2="11" y2="14" />
+                            <line x1="8" y1="11" x2="14" y2="11" />
+                        </svg>
+                        Phóng to
+                    </button>
+                </div>
+
+                <!-- Main Menu Viewer -->
+                <div class="menu-viewer-wrapper">
+                    <!-- Navigation Buttons (Desktop view sidebar arrows) -->
+                    <button class="nav-arrow nav-arrow-left" id="btn-prev-arrow" title="Trang trước">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+
+                    <div class="menu-image-container" id="menu-touch-area">
+                        <!-- Menu Image and Loader -->
+                        <div class="image-loader" id="menu-loader">
+                            <div class="spinner"></div>
+                        </div>
+                        <img src="menu/menu1.jpg" alt="Menu Tiệm Lẩu Nhà An Trang 1" class="menu-image"
+                            id="displayed-menu-img">
+                    </div>
+
+                    <button class="nav-arrow nav-arrow-right" id="btn-next-arrow" title="Trang sau">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Pagination Controls Bar -->
+                <div class="pagination-controls" id="pagination-controls">
+                    <button class="btn btn-nav" id="btn-first" title="Trang đầu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="11 17 6 12 11 7" />
+                            <polyline points="18 17 13 12 18 7" />
+                        </svg>
+                        Đầu
+                    </button>
+                    <button class="btn btn-nav" id="btn-prev" title="Trang trước">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                        Trước
+                    </button>
+
+                    <!-- Direct Page Selector Dropdown -->
+                    <div class="page-select-container">
+                        <select id="select-page" class="select-page" aria-label="Chọn trang thực đơn">
+                            <!-- Options will be generated dynamically via Javascript -->
+                        </select>
+                    </div>
+
+                    <button class="btn btn-nav" id="btn-next" title="Trang sau">
+                        Sau
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-nav" id="btn-last" title="Trang cuối">
+                        Cuối
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="13 17 18 12 13 7" />
+                            <polyline points="6 17 11 12 6 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DECOR SHOWCASE -->
+        <section id="decor-section" class="content-section">
+            <div class="decor-container">
+                <!-- Branch Filter Sub-Tabs -->
+                <div class="branch-selector">
+                    <button class="branch-tab active" data-branch="all" id="btn-branch-all">Tất Cả Chi Nhánh</button>
+                    <button class="branch-tab" data-branch="cn2" id="btn-branch-cn2">Chi Nhánh 2</button>
+                    <button class="branch-tab" data-branch="cn5" id="btn-branch-cn5">Chi Nhánh 5</button>
+                </div>
+
+                <!-- Decor Gallery Grid -->
+                <div class="decor-grid" id="decor-gallery">
+                    <!-- CN2 Images -->
+                    <div class="decor-card" data-branch="cn2">
+                        <div class="decor-img-wrapper">
+                            <img src="decor/cn2/1.jpg" alt="Không gian Chi nhánh 2 - Góc 1" class="decor-thumb">
+                            <div class="decor-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    <line x1="11" y1="8" x2="11" y2="14" />
+                                    <line x1="8" y1="11" x2="14" y2="11" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="decor-info">
+                            <h3>Chi Nhánh 2</h3>
+                            <p>Góc trang trí bàn tiệc ấm cúng</p>
+                        </div>
+                    </div>
+
+                    <div class="decor-card" data-branch="cn2">
+                        <div class="decor-img-wrapper">
+                            <img src="decor/cn2/2.jpg" alt="Không gian Chi nhánh 2 - Góc 2" class="decor-thumb">
+                            <div class="decor-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    <line x1="11" y1="8" x2="11" y2="14" />
+                                    <line x1="8" y1="11" x2="14" y2="11" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="decor-info">
+                            <h3>Chi Nhánh 2</h3>
+                            <p>Không gian gia đình sum vầy</p>
+                        </div>
+                    </div>
+
+                    <!-- CN5 Images -->
+                    <div class="decor-card" data-branch="cn5">
+                        <div class="decor-img-wrapper">
+                            <img src="decor/cn5/1.jpg" alt="Không gian Chi nhánh 5 - Góc 1" class="decor-thumb">
+                            <div class="decor-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    <line x1="11" y1="8" x2="11" y2="14" />
+                                    <line x1="8" y1="11" x2="14" y2="11" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="decor-info">
+                            <h3>Chi Nhánh 5</h3>
+                            <p>Khu vực check-in lung linh ánh đèn</p>
+                        </div>
+                    </div>
+
+                    <div class="decor-card" data-branch="cn5">
+                        <div class="decor-img-wrapper">
+                            <img src="decor/cn5/2.jpg" alt="Không gian Chi nhánh 5 - Góc 2" class="decor-thumb">
+                            <div class="decor-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    <line x1="11" y1="8" x2="11" y2="14" />
+                                    <line x1="8" y1="11" x2="14" y2="11" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="decor-info">
+                            <h3>Chi Nhánh 5</h3>
+                            <p>Không gian chung rộng rãi, thoáng mát</p>
+                        </div>
+                    </div>
+
+                    <div class="decor-card" data-branch="cn5">
+                        <div class="decor-img-wrapper">
+                            <img src="decor/cn5/3.jpg" alt="Không gian Chi nhánh 5 - Góc 3" class="decor-thumb">
+                            <div class="decor-overlay">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                    <line x1="11" y1="8" x2="11" y2="14" />
+                                    <line x1="8" y1="11" x2="14" y2="11" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="decor-info">
+                            <h3>Chi Nhánh 5</h3>
+                            <p>Góc nhỏ yên tĩnh thơ mộng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal">
+        <!-- Close Button -->
+        <button class="lightbox-close" id="lightbox-close" title="Đóng (Esc)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+
+        <!-- Navigation Buttons (Inside Lightbox for gallery mode) -->
+        <button class="lightbox-arrow lightbox-arrow-left" id="lightbox-prev" title="Ảnh trước">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+        </button>
+
+        <!-- Lightbox Content Container -->
+        <div class="lightbox-content" id="lightbox-content">
+            <img src="" alt="Ảnh phóng to" class="lightbox-img" id="lightbox-img">
+            <!-- Dynamic Caption -->
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+
+        <button class="lightbox-arrow lightbox-arrow-right" id="lightbox-next" title="Ảnh sau">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+            </svg>
+        </button>
+
+        <!-- Zoom Control Controls (especially helpful for reading menu detailed text) -->
+        <div class="zoom-controls" id="zoom-controls">
+            <button class="zoom-btn" id="zoom-out" title="Thu nhỏ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    <line x1="8" y1="11" x2="14" y2="11" />
+                </svg>
+            </button>
+            <button class="zoom-btn" id="zoom-reset" title="Đặt lại tỷ lệ">100%</button>
+            <button class="zoom-btn" id="zoom-in" title="Phóng to">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    <line x1="11" y1="8" x2="11" y2="14" />
+                    <line x1="8" y1="11" x2="14" y2="11" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact & Store Information Footer -->
+    <footer class="app-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>TIỆM LẨU NHÀ AN</h4>
+                <p>Nơi tụ họp lý tưởng cho những bữa tiệc gia đình ấm cúng và những buổi tụ tập bạn bè vui vẻ. Hãy đến
+                    và trải nghiệm vị lẩu đậm đà từ các nguyên liệu tươi sạch nhất.</p>
+                <p style="margin-top: 10px; font-size: 0.88rem; color: var(--text-secondary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="footer-icon" style="display:inline; vertical-align:middle; margin-right:5px;">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Email: tiemlaunhaan@gmail.com
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>CHI NHÁNH CẦN THƠ</h4>
+                <p style="font-weight:700; color: var(--accent-gold); margin-bottom: 5px;">Hotline: 0888 803 724</p>
+                <ul class="branch-list">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <div>
+                            <strong>CN2:</strong> 20L/1 Phạm Sơn Khai, An Khánh, Ninh Kiều, Cần Thơ<br>
+                            <a href="https://maps.app.goo.gl/M6uagD8MHXtjzJ1S8" target="_blank" class="map-link">📍 Bản đồ dẫn đường</a>
+                        </div>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <div>
+                            <strong>CN5:</strong> 117 Nguyễn Văn Cừ, Cái Khế, Ninh Kiều, Cần Thơ<br>
+                            <a href="https://maps.app.goo.gl/5htFRTYN3f6vmBjC9" target="_blank" class="map-link">📍 Bản đồ dẫn đường</a>
+                        </div>
+                    </li>
+                    <li style="margin-top: 5px; font-size: 0.85rem; opacity: 0.8;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        Giờ mở cửa: 14:00 - 23:00 (Mỗi ngày)
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>CHI NHÁNH AN GIANG</h4>
+                <p style="font-weight:700; color: var(--accent-gold); margin-bottom: 5px;">Hotline: 0907 008 007</p>
+                <ul class="branch-list">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <div>
+                            <strong>CN1:</strong> 268 Ung Văn Khiêm, Long Xuyên, An Giang<br>
+                            <a href="https://maps.app.goo.gl/QzGoWqEbXXkm7GEF8" target="_blank" class="map-link">📍 Bản đồ dẫn đường</a>
+                        </div>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <div>
+                            <strong>CN3:</strong> 389 Nguyễn Hoàng, Long Xuyên, An Giang<br>
+                            <a href="https://maps.app.goo.gl/t2wm6z7VmTcmKKQM9" target="_blank" class="map-link">📍 Bản đồ dẫn đường</a>
+                        </div>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        <div>
+                            <strong>CN4:</strong> 132 Trần Phú, Phú Hữu, Thoại Sơn, An Giang<br>
+                            <a href="https://maps.app.goo.gl/3c8cjRyxBnig8Ser9" target="_blank" class="map-link">📍 Bản đồ dẫn đường</a>
+                        </div>
+                    </li>
+                    <li style="margin-top: 5px; font-size: 0.85rem; opacity: 0.8;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="footer-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        Giờ mở cửa: 14:00 - 23:00 (Mỗi ngày)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tiệm Lẩu Nhà An. Bản quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+
+</html>
