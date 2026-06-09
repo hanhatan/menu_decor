@@ -35,6 +35,7 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -889,13 +890,18 @@ body {
     .main-nav {
         width: 100%;
         justify-content: center;
+        gap: 0.4rem;
     }
 
     .nav-tab {
         flex: 1;
         justify-content: center;
-        padding: 0.55rem 0.88rem;
-        font-size: 0.9rem;
+        padding: 0.55rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-tab svg {
+        display: none !important;
     }
 
     .main-content {
@@ -953,6 +959,11 @@ body {
         text-align: center;
     }
 
+    .nav-tab {
+        padding: 0.55rem 0.35rem;
+        font-size: 0.8rem;
+    }
+
     .menu-image-container {
         max-height: 50vh;
     }
@@ -980,7 +991,8 @@ body {
         width: 100%;
     }
 
-    .decor-grid {
+    .decor-grid, .footer-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 }
