@@ -3,7 +3,24 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // MENU CONFIGURATIONS
+    const menuConfigs = {
+        cantho: {
+            title: 'chi nhánh Cần Thơ',
+            getMenuPath: function(page) {
+                return `menu/CT/MENU CT ${page}` + (page === 7 ? '.png' : '.jpg');
+            }
+        },
+        longxuyen: {
+            title: 'chi nhánh Long Xuyên',
+            getMenuPath: function(page) {
+                return `menu/MENU-LONGXUYEN/MENU LX ${page}.png`;
+            }
+        }
+    };
+
     // STATE VARIABLES
+    let currentMenuType = 'cantho'; // 'cantho' or 'longxuyen'
     let currentMenuPage = 1;
     const totalMenuPages = 16;
     
@@ -56,8 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
        TAB SWITCHING SYSTEM
        ========================================================================== */
     mainTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', (e) => {
             const targetSectionId = tab.getAttribute('data-target');
+            if (!targetSectionId) return; // Allow normal link navigation for non-tab links
             
             // Switch tabs
             mainTabs.forEach(t => t.classList.remove('active'));
@@ -71,6 +89,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     sec.classList.remove('active');
                 }
             });
+
+            // Handle menu branch switching
+            const menuType = tab.getAttribute('data-menu-type');
+            if (menuType) {
+                if (currentMenuType !== menuType) {
+                    currentMenuType = menuType;
+
+                    // Update info text dynamically
+                    const menuInfoText = document.getElementById('menu-info-text');
+                    if (menuInfoText) {
+                        const branchName = currentMenuType === 'cantho' ? 'Cần Thơ' : 'Long Xuyên';
+                        menuInfoText.innerHTML = `Thực đơn chi nhánh ${branchName} gồm <span class="highlight">16 trang</span>. Vuốt trái/phải hoặc dùng các nút điều hướng để xem chi tiết.`;
+                    }
+
+                    // Reset menu to first page on switch
+                    updateMenuPage(1);
+                }
+            }
 
             // Scroll to top on switch
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -108,11 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
         menuLoader.classList.add('active');
         
         // Form the image path
-        const imagePath = `menu/menu${currentMenuPage}.jpg`;
+        const imagePath = menuConfigs[currentMenuType].getMenuPath(currentMenuPage);
         
         // Update image source
         menuImg.src = imagePath;
-        menuImg.alt = `Menu Tiệm Lẩu Nhà An Trang ${currentMenuPage}`;
+        menuImg.alt = `Menu Tiệm Lẩu Nhà An ${currentMenuType === 'cantho' ? 'Cần Thơ' : 'Long Xuyên'} Trang ${currentMenuPage}`;
 
         // When image is fully loaded, hide spinner
         menuImg.onload = () => {
@@ -292,9 +328,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateLightboxContent() {
         if (lightboxMode === 'menu') {
-            lightboxImg.src = `menu/menu${currentMenuPage}.jpg`;
+            lightboxImg.src = menuConfigs[currentMenuType].getMenuPath(currentMenuPage);
             lightboxImg.alt = `Menu Trang ${currentMenuPage}`;
-            lightboxCaption.textContent = `Thực đơn Tiệm Lẩu Nhà An — Trang ${currentMenuPage} / ${totalMenuPages}`;
+            lightboxCaption.textContent = `Thực đơn Tiệm Lẩu Nhà An ${currentMenuType === 'cantho' ? 'Cần Thơ' : 'Long Xuyên'} — Trang ${currentMenuPage} / ${totalMenuPages}`;
             
             // Set navigation arrow visibility for menu
             lightboxPrev.style.display = currentMenuPage === 1 ? 'none' : 'flex';

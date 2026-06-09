@@ -31,15 +31,21 @@
 
             <!-- Main Navigation Tab Switcher -->
             <nav class="main-nav">
-                <button class="nav-tab active" id="tab-menu" data-target="menu-section">
+                <button class="nav-tab active" id="tab-menu-ct" data-target="menu-section" data-menu-type="cantho">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
-                        <path d="M6 6h10" />
-                        <path d="M6 10h10" />
-                        <path d="M6 14h10" />
+                        <path d="M6 6h10" /><path d="M6 10h10" /><path d="M6 14h10" />
                     </svg>
-                    Thực Đơn (Menu)
+                    Menu Cần Thơ
+                </button>
+                <button class="nav-tab" id="tab-menu-lx" data-target="menu-section" data-menu-type="longxuyen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                        <path d="M6 6h10" /><path d="M6 10h10" /><path d="M6 14h10" />
+                    </svg>
+                    Menu Long Xuyên
                 </button>
                 <button class="nav-tab" id="tab-decor" data-target="decor-section">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -62,9 +68,8 @@
             <div class="menu-container">
                 <!-- Page Info and Action Bar -->
                 <div class="action-bar">
-                    <div class="info-text">
-                        Thực đơn gồm <span class="highlight">16 trang</span>. Vuốt trái/phải hoặc dùng các nút điều
-                        hướng để xem chi tiết.
+                    <div class="info-text" id="menu-info-text">
+                        Thực đơn chi nhánh Cần Thơ gồm <span class="highlight">16 trang</span>. Vuốt trái/phải hoặc dùng các nút điều hướng để xem chi tiết.
                     </div>
                     <button class="btn btn-secondary btn-zoom" id="btn-zoom-menu" title="Phóng to thực đơn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -93,7 +98,7 @@
                         <div class="image-loader" id="menu-loader">
                             <div class="spinner"></div>
                         </div>
-                        <img src="menu/menu1.jpg" alt="Menu Tiệm Lẩu Nhà An Trang 1" class="menu-image"
+                        <img src="menu/CT/MENU CT 1.jpg" alt="Menu Tiệm Lẩu Nhà An Cần Thơ Trang 1" class="menu-image"
                             id="displayed-menu-img">
                     </div>
 

@@ -5,20 +5,20 @@
 
 /* Google Fonts Import & Variables */
 :root {
-    --bg-main: #0f0a07;
-    --bg-darker: #080504;
-    --text-primary: #f5ece5;
-    --text-secondary: #c9b8ad;
-    --accent-red: #d3421e;
-    --accent-red-hover: #b03113;
-    --accent-gold: #df9928;
-    --accent-gold-hover: #be801c;
-    --border-light: rgba(140, 93, 64, 0.2);
-    --border-hover: rgba(223, 153, 40, 0.5);
-    --glass-bg: rgba(22, 14, 10, 0.75);
-    --glass-bg-hover: rgba(30, 20, 15, 0.9);
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 20px rgba(211, 66, 30, 0.15);
+    --bg-main: #fbf9f4;
+    --bg-darker: #f4eedf;
+    --text-primary: #2b1b11;
+    --text-secondary: #665246;
+    --accent-red: #c82c0e;
+    --accent-red-hover: #a32209;
+    --accent-gold: #b57a1d;
+    --accent-gold-hover: #936214;
+    --border-light: rgba(181, 122, 29, 0.15);
+    --border-hover: rgba(181, 122, 29, 0.4);
+    --glass-bg: rgba(251, 249, 244, 0.85);
+    --glass-bg-hover: rgba(244, 238, 223, 0.95);
+    --shadow-soft: 0 10px 35px rgba(43, 27, 17, 0.08);
+    --shadow-glow: 0 0 20px rgba(200, 44, 14, 0.08);
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -64,7 +64,7 @@ body {
     left: -10%;
     width: 40vw;
     height: 40vw;
-    background: radial-gradient(circle, rgba(211, 66, 30, 0.18) 0%, rgba(211, 66, 30, 0) 70%);
+    background: radial-gradient(circle, rgba(200, 44, 14, 0.06) 0%, rgba(200, 44, 14, 0) 70%);
 }
 
 .orb-2 {
@@ -72,7 +72,7 @@ body {
     right: -10%;
     width: 45vw;
     height: 45vw;
-    background: radial-gradient(circle, rgba(223, 153, 40, 0.15) 0%, rgba(223, 153, 40, 0) 70%);
+    background: radial-gradient(circle, rgba(181, 122, 29, 0.05) 0%, rgba(181, 122, 29, 0) 70%);
 }
 
 /* Scrollbar Customization */
@@ -84,7 +84,7 @@ body {
     background: var(--bg-darker);
 }
 ::-webkit-scrollbar-thumb {
-    background: #3a2418;
+    background: #c5b6a7;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -140,10 +140,10 @@ body {
 .main-nav {
     display: flex;
     gap: 0.75rem;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(43, 27, 17, 0.06);
     padding: 0.35rem;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(43, 27, 17, 0.08);
 }
 
 .nav-tab {
@@ -168,7 +168,7 @@ body {
 
 .nav-tab:hover {
     color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(43, 27, 17, 0.04);
 }
 
 .nav-tab.active {
@@ -240,7 +240,7 @@ body {
 }
 
 .btn-nav {
-    background: rgba(22, 14, 10, 0.5);
+    background: rgba(251, 249, 244, 0.9);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
     min-width: 80px;
@@ -304,7 +304,7 @@ body {
 .menu-image-container {
     flex: 1;
     position: relative;
-    background: #000;
+    background: #ffffff;
     border-radius: 16px;
     border: 2px solid var(--border-light);
     box-shadow: var(--shadow-soft);
@@ -339,7 +339,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 10, 7, 0.9);
+    background: rgba(251, 249, 244, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -357,7 +357,7 @@ body {
 .spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(223, 153, 40, 0.1);
+    border: 4px solid rgba(181, 122, 29, 0.1);
     border-left-color: var(--accent-gold);
     border-radius: 50%;
     animation: spin 1s linear infinite;
@@ -466,7 +466,7 @@ body {
 .branch-selector {
     display: flex;
     gap: 0.5rem;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(43, 27, 17, 0.06);
     padding: 0.4rem;
     border-radius: 12px;
     border: 1px solid var(--border-light);
@@ -492,7 +492,7 @@ body {
 .branch-tab.active {
     background: var(--glass-bg-hover);
     color: var(--accent-gold);
-    border: 1px solid rgba(223, 153, 40, 0.3);
+    border: 1px solid rgba(181, 122, 29, 0.3);
     box-shadow: var(--shadow-glow);
 }
 
@@ -841,7 +841,7 @@ body {
 }
 
 .map-link:hover {
-    color: white;
+    color: var(--accent-red);
     text-decoration: underline;
 }
 
@@ -849,13 +849,13 @@ body {
     max-width: 1280px;
     margin: 3rem auto 0;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-light);
     text-align: center;
 }
 
 .footer-bottom p {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--text-secondary);
 }
 
 /* ==========================================================================
