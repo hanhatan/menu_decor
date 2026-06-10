@@ -106,6 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Reset menu to first page on switch
                     updateMenuPage(1);
                 }
+
+                // Update URL quietly without page reload
+                const newUrl = window.location.pathname + '?menu=' + (menuType === 'longxuyen' ? 'lx' : 'ct');
+                window.history.replaceState({ path: newUrl }, '', newUrl);
+            } else if (tab.id === 'tab-decor') {
+                // Update URL quietly without page reload for decor
+                const newUrl = window.location.pathname + '?menu=decor';
+                window.history.replaceState({ path: newUrl }, '', newUrl);
             }
 
             // Scroll to top on switch
@@ -116,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clicking logo takes back to Menu Tab
     if (brandLogo) {
         brandLogo.addEventListener('click', () => {
-            const menuTabButton = document.getElementById('tab-menu');
+            const menuTabButton = document.getElementById('tab-menu-ct');
             if (menuTabButton) menuTabButton.click();
         });
     }
@@ -526,6 +534,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prevent image drag default ghosting
     lightboxImg.addEventListener('dragstart', (e) => e.preventDefault());
 
+    // Check URL parameters and hash on load to deep-link to a specific menu/section
+    function handleDeepLinking() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const menuParam = urlParams.get('menu') || urlParams.get('tab');
+        const hash = window.location.hash.toLowerCase();
+
+        let targetTab = null;
+
+        if (menuParam) {
+            const paramClean = menuParam.toLowerCase();
+            if (paramClean === 'longxuyen' || paramClean === 'lx' || paramClean === 'long-xuyen') {
+                targetTab = document.getElementById('tab-menu-lx');
+            } else if (paramClean === 'decor' || paramClean === 'khonggian' || paramClean === 'space' || paramClean === 'decor-section') {
+                targetTab = document.getElementById('tab-decor');
+            } else if (paramClean === 'cantho' || paramClean === 'ct' || paramClean === 'can-tho') {
+                targetTab = document.getElementById('tab-menu-ct');
+            }
+        }
+
+        if (!targetTab && hash) {
+            if (hash === '#longxuyen' || hash === '#lx' || hash === '#menu-lx') {
+                targetTab = document.getElementById('tab-menu-lx');
+            } else if (hash === '#decor' || hash === '#khonggian' || hash === '#space' || hash === '#decor-section') {
+                targetTab = document.getElementById('tab-decor');
+            } else if (hash === '#cantho' || hash === '#ct' || hash === '#menu-ct') {
+                targetTab = document.getElementById('tab-menu-ct');
+            }
+        }
+
+        if (targetTab) {
+            targetTab.click();
+            
+            // Optional: deep link to a specific page
+            const pageParam = urlParams.get('page') || urlParams.get('trang');
+            if (pageParam) {
+                const pageNum = parseInt(pageParam);
+                if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalMenuPages) {
+                    updateMenuPage(pageNum);
+                }
+            }
+        }
+    }
+
 
     /* ==========================================================================
        INITIALIZATION CALLS
@@ -533,4 +584,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initPageSelect();
     updateMenuPage(1);
     updateVisibleDecorCards();
+    handleDeepLinking();
 });
